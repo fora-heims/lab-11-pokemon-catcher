@@ -33,20 +33,37 @@
 
 ### Local Storage Utils Functions -- could be in a separate *storage-utils.js*
 * findById -- reference products lab for this function
+* set Results -- TWO FUNCTIONS
+  * *Encountered* -- 
+    * getResults
+    * increment pokemonAppear
+    * stringify
+    * localStorage.setItem('RESULTS', string)
+  * *Selected* -- 
+    * getResults
+    * increment pokemonChosen
+    * stringify
+    * localStorage.setItem('RESULTS', string)
 * getResults
   * looks for 'RESULTS' in local storage
-  if ('RESULTS')
+  * if ('RESULTS') exists 
+    * localStorage.getItem('RESULTs')
+    * JSON.parse
+    * return results array
+  * else (no 'RESULTS')
+    * return empty array
+    
   ```
   'RESULTS' = [
     {
         id: '',
-        appeared: '',
-        chosen: ''
+        appeared: #,
+        chosen: #
     },
     {
         id: '',
-        appeared: '',
-        chosen: ''
+        appeared: #,
+        chosen: #
     },
     ...
 ]```
