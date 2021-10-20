@@ -14,6 +14,7 @@
 
 ## user events
 * Page Load
+  * update state -- **pokemonCaught** (total plays = 0)
   * generate three pokemon 
   * update state -- **pokemonAppear**
   * update view based on state -- render
@@ -52,7 +53,7 @@
     * return results array
   * else (no 'RESULTS')
     * return empty array
-    
+
   ```
   'RESULTS' = [
     {
@@ -71,17 +72,22 @@
 
 ### home page Functions -- app.js
 
+* generate pokemon function -- 
+  * use array.length and Math.random / Math.floor to **create an index**
+    *  use a while loop to make sure the three random numbers are not the same
+    (rand1 === rand2 || rand2 === rand3 || rand1 === rand3 )
+  * call Encountered 
+  * render image onto page
+
+
+
+* increment pokemonCaught -- number of plays
+
+
+
+()[]
 
 
 
 
 
-
-
-
-
-
-
-
-
-  - [ ] Stretch - counter at the top of page to display play count
