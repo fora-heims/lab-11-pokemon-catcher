@@ -84,10 +84,9 @@
 * increment pokemonCaught -- number of plays
 
 
-
-()[]
-
-
-
-
-
+## Contributors To the Plan on this README: 
+* [https://github.com/Gcrowder93](https://github.com/Gcrowder93)
+* [https://github.com/ckaynatividad](https://github.com/ckaynatividad)
+* [https://github.com/Libbi-Dunham](https://github.com/Libbi-Dunham)
+* [https://github.com/michellerenehey](https://github.com/michellerenehey)
+* [https://github.com/fora-heims](https://github.com/fora-heims)
