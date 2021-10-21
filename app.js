@@ -3,9 +3,6 @@ import { pokemonArray } from './src/pokemon.js';
 import { encounterPokemon, capturePokemon } from './src/state-utils.js';
 import { findByPokemon, createInitialPokedex, setPokedex, getPokedex } from './src/storage-utils.js';
 
-const radioZero = document.getElementById('pkmn-r1');
-const radioOne = document.getElementById('pkmn-r2');
-const radioTwo = document.getElementById('pkmn-r3');
 const imgZero = document.getElementById('pkmn-img-r1');
 const imgOne = document.getElementById('pkmn-img-r2');
 const imgTwo = document.getElementById('pkmn-img-r3');
@@ -15,6 +12,7 @@ const catchButton = document.getElementById('catch-button');
 let x = 0;
 let y = 0;
 let z = 0;
+let randomArray = [x, y, z];
 
 function generateIndexes() {
     x = Math.floor(Math.random() * pokemonArray.length);
@@ -31,6 +29,7 @@ function generatePokemon() {
     imgOne.src = pokemonArray[y].url_image;
     imgTwo.src = pokemonArray[z].url_image;
 
+    randomArray = [x, y, z];
     getPokedex();
 
     setPokedex();
@@ -41,10 +40,17 @@ generatePokemon();
 
 // On Button Click
 catchButton.addEventListener('click', () => {
-    getPokedex();
-
-    setPokedex('obj');
-    generatePokemon();
-    console.log(createInitialPokedex());
+    let checked = document.querySelectorAll('input[type=radio]:checked');
+    if (checked.length === 1) {
+        let chosen = pokemonArray[randomArray[checked[0].value]].pokemon;
+        capturePokemon(chosen);
+        generatePokemon();
+        console.log(chosen);
+        // let pokedex = getPokedex();
+        // findByPokemon(pokedex, chosen);
+        // let pokedexString = JSON.stringify(pokedex);
+        // setPokedex('POKEDEX', pokedexString);
+        
+    }
 });
 
