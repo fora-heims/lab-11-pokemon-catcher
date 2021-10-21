@@ -1,7 +1,6 @@
 // import functions and grab DOM elements
 import { pokemonArray } from './src/pokemon.js';
-import { encounterPokemon, capturePokemon } from './src/state-utils.js';
-import { findByPokemon, createInitialPokedex, setPokedex, getPokedex } from './src/storage-utils.js';
+import { findByPokemon, createInitialPokedex, setPokedex, getPokedex, encounterPokemon, capturePokemon } from './src/storage-utils.js';
 
 const imgZero = document.getElementById('pkmn-img-r1');
 const imgOne = document.getElementById('pkmn-img-r2');

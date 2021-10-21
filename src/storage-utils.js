@@ -1,11 +1,28 @@
 import { pokemonArray } from '../src/pokemon.js';
 
-export function findByPokemon(pokemonValue, pokemonArray) {
+export function findByPokemon(pokemonArray, pokemonValue) {
     for (let pokemon of pokemonArray){
         if (pokemonValue === pokemon.pokemon){
             return pokemon;
         }
     }
+}
+
+export function encounterPokemon(randomArray) {
+    let pokedex = getPokedex();
+    for (let encountered of randomArray) {
+        let poke = findByPokemon(pokedex, encountered);
+        poke.appeared++;
+        return pokedex;
+        // localStorage.setItem('POKEDEX', pokedex);
+    }
+}
+
+export function capturePokemon(pokemon) {
+    let pokedex = getPokedex();
+    findByPokemon(pokedex, pokemon);
+    let pokedexString = JSON.stringify(pokedex);
+    setPokedex('POKEDEX', pokedexString);
 }
 
 export function createInitialPokedex() {
