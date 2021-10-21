@@ -1,7 +1,7 @@
 // import functions and grab DOM elements
 import { pokemonArray } from './src/pokemon.js';
 import { encounterPokemon, capturePokemon } from './src/state-utils.js';
-import { findByPokemon, setPokedex, getPokedex } from './src/storage-utils.js';
+import { findByPokemon, createInitialPokedex, setPokedex, getPokedex } from './src/storage-utils.js';
 
 const radioZero = document.getElementById('pkmn-r1');
 const radioOne = document.getElementById('pkmn-r2');
@@ -45,6 +45,6 @@ catchButton.addEventListener('click', () => {
 
     setPokedex('obj');
     generatePokemon();
-    console.log([x, y, z]);
+    console.log(createInitialPokedex());
 });
 
