@@ -29,9 +29,6 @@ function generatePokemon() {
     imgTwo.src = pokemonArray[z].url_image;
 
     randomArray = [x, y, z];
-    getPokedex();
-
-    setPokedex();
 }
 
 // On Page Load:

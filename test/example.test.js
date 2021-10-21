@@ -2,11 +2,12 @@
 // import { example } from '../example.js';
 
 import { pokemonArray } from '../src/pokemon.js';
-import { findByPokemon, createInitialPokedex, setPokedex, getPokedex, encounterPokemon, capturePokemon } from '../src/storage-utils.js';
+import { findByPokemon, createInitialPokedex, getPokedex, encounterPokemon, capturePokemon } from '../src/storage-utils.js';
 
 const test = QUnit.test;
 const skip = QUnit.skip;
 
+// Passing
 test('getPokedex returns the key "POKEDEX" from localStorage', (expect) => {
 
     const pokedex = [
@@ -31,35 +32,7 @@ test('getPokedex returns the key "POKEDEX" from localStorage', (expect) => {
     expect.deepEqual(actual, pokedex);
 });
 
-skip('encounterPokemon increments the appeared pokemon', (expect) => {
-
-    const expected = [
-        { pokemon: 'bulbasaur', appeared: 0, chosen: 0 },
-        { pokemon: 'ivysaur', appeared: 0, chosen: 0 },
-        { pokemon: 'charmander', appeared: 1, chosen: 0 },
-        { pokemon: 'charmeleon', appeared: 0, chosen: 0 },
-        { pokemon: 'charizard', appeared: 0, chosen: 0 },
-        { pokemon: 'squirtle', appeared: 1, chosen: 0 },
-        { pokemon: 'wartortle', appeared: 0, chosen: 0 },
-        { pokemon: 'blastoise', appeared: 0, chosen: 0 },
-        { pokemon: 'caterpie', appeared: 1, chosen: 0 },
-        { pokemon: 'metapod', appeared: 0, chosen: 0 },
-        { pokemon: 'beedrill', appeared: 0, chosen: 0 },
-        { pokemon: 'weedle', appeared: 0, chosen: 0 },
-        { pokemon: 'kakuna', appeared: 0, chosen: 0 },
-        { pokemon: 'pidgey', appeared: 0, chosen: 0 },
-    ];
-    
-
-    console.log(encounterPokemon());
-    
-    encounterPokemon([2, 5, 8]);
-
-    let actual = getPokedex();
-
-    expect.deepEqual(actual, expected);
-});
-
+// Passing
 test('findByPokemon should return the pokemon object from an array with a pokemon key', (expect) => {
     const expected = {
         '_id':'5cef3501ef6005a77cd4fd19',
@@ -98,6 +71,7 @@ test('findByPokemon should return the pokemon object from an array with a pokemo
     expect.deepEqual(actual, expected);
 });
 
+// Passing
 test('createInitialPokedex should create a pokedex with appeared and encountered values set to zero', (expect) => {
     localStorage.removeItem('POKEDEX');
     const expected = [
@@ -121,14 +95,56 @@ test('createInitialPokedex should create a pokedex with appeared and encountered
     expect.deepEqual(actual, expected);
 });
 
-skip('setPokedex should set the localStorage value associated with the "POKEDEX" key', (expect) => {
-    const expected = true;
-    const actual = setPokedex();
-    expect.equal(actual, expected);
+test('encounterPokemon increments the appeared pokemon', (expect) => {
+    localStorage.removeItem('POKEDEX');
+    createInitialPokedex();
+    const expected = [
+        { pokemon: 'bulbasaur', appeared: 0, chosen: 0 },
+        { pokemon: 'ivysaur', appeared: 0, chosen: 0 },
+        { pokemon: 'charmander', appeared: 1, chosen: 0 },
+        { pokemon: 'charmeleon', appeared: 0, chosen: 0 },
+        { pokemon: 'charizard', appeared: 0, chosen: 0 },
+        { pokemon: 'squirtle', appeared: 1, chosen: 0 },
+        { pokemon: 'wartortle', appeared: 0, chosen: 0 },
+        { pokemon: 'blastoise', appeared: 0, chosen: 0 },
+        { pokemon: 'caterpie', appeared: 1, chosen: 0 },
+        { pokemon: 'metapod', appeared: 0, chosen: 0 },
+        { pokemon: 'beedrill', appeared: 0, chosen: 0 },
+        { pokemon: 'weedle', appeared: 0, chosen: 0 },
+        { pokemon: 'kakuna', appeared: 0, chosen: 0 },
+        { pokemon: 'pidgey', appeared: 0, chosen: 0 },
+    ];
+    
+    encounterPokemon([2, 5, 8]);
+
+    let actual = getPokedex();
+
+    expect.deepEqual(actual, expected);
 });
 
-skip('capturePokemon should increment the value of captured of the pokemon', (expect) => {
-    const expected = true;
-    const actual = capturePokemon();
-    expect.equal(actual, expected);
+test('capturePokemon should increment the value of captured of the pokemon', (expect) => {
+    localStorage.removeItem('POKEDEX');
+    createInitialPokedex();
+    const expected = [
+        { pokemon: 'bulbasaur', appeared: 0, chosen: 0 },
+        { pokemon: 'ivysaur', appeared: 0, chosen: 0 },
+        { pokemon: 'charmander', appeared: 0, chosen: 1 },
+        { pokemon: 'charmeleon', appeared: 0, chosen: 0 },
+        { pokemon: 'charizard', appeared: 0, chosen: 0 },
+        { pokemon: 'squirtle', appeared: 0, chosen: 0 },
+        { pokemon: 'wartortle', appeared: 0, chosen: 0 },
+        { pokemon: 'blastoise', appeared: 0, chosen: 0 },
+        { pokemon: 'caterpie', appeared: 0, chosen: 0 },
+        { pokemon: 'metapod', appeared: 0, chosen: 0 },
+        { pokemon: 'beedrill', appeared: 0, chosen: 0 },
+        { pokemon: 'weedle', appeared: 0, chosen: 0 },
+        { pokemon: 'kakuna', appeared: 0, chosen: 0 },
+        { pokemon: 'pidgey', appeared: 0, chosen: 0 },
+    ];
+    
+    capturePokemon('charmander');
+
+    let actual = getPokedex();
+
+    expect.deepEqual(actual, expected);
 });
