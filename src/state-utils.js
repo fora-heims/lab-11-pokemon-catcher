@@ -1,13 +1,13 @@
 import { pokemonArray } from '../src/pokemon.js';
+import { findByPokemon, getPokedex } from './storage-utils.js';
 
 
 
 export function encounterPokemon(pokeIndex) {
-
-    // pokemonArray[randomIndexArray[0]];
-    // pokemonArray[randomIndexArray[1]];
-    // pokemonArray[randomIndexArray[2]];
-
+    let pokedex = getPokedex();
+    let poke = findByPokemon(pokeIndex, pokedex);
+    poke.appeared++;
+    localStorage.setItem('POKEDEX', pokedex);
 }
 
 

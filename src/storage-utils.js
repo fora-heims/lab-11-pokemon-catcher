@@ -20,7 +20,7 @@ export function getPokedex() {
 
 export function setPokedex() {
     let pokedex = getPokedex();
-    let appearOrChosenPoke = findByPokemon(pokemonValue, pokedex);
+    // let appearOrChosenPoke = findByPokemon(pokemonValue, pokedex);
     // transform pokedex
     let pokedexString = JSON.stringify(pokedex);
     localStorage.setItem('POKEDEX', pokedexString);
