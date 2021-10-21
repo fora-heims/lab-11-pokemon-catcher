@@ -10,12 +10,12 @@ export function findByPokemon(pokemonArray, pokemonValue) {
 
 export function encounterPokemon(randomArray) {
     let pokedex = getPokedex();
-    for (let encountered of randomArray) {
-        let poke = findByPokemon(pokedex, encountered);
+    for (let each of randomArray) {
+        let poke = pokedex[each];
         poke.appeared++;
-        return pokedex;
-        // localStorage.setItem('POKEDEX', pokedex);
     }
+    return pokedex;
+        // localStorage.setItem('POKEDEX', pokedex);
 }
 
 export function capturePokemon(pokemon) {
@@ -26,7 +26,8 @@ export function capturePokemon(pokemon) {
 }
 
 export function createInitialPokedex() {
-    return pokemonArray.map(object => ({ 'pokemon': object.pokemon, appeared: 0, chosen: 0 }));
+    let pokeObject = pokemonArray.map(object => ({ 'pokemon': object.pokemon, appeared: 0, chosen: 0 }));
+    localStorage.setItem('POKEDEX', JSON.stringify(pokeObject));
 }
 
 export function getPokedex() {
