@@ -1,0 +1,32 @@
+.results-divs {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px 100px 20px;
+    padding: 5px;
+    border: 5px solid transparent;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-divs img {
+    width: 150px;
+}
+
+.results-divs:hover img {
+    transform: scale(1.5);
+}
+
+.results-divs:hover {
+    border-left: solid #64bd41 5px;
+    border-right: solid #6d0e0e 5px;
+    border-top: solid #f1a61b 5px;
+    border-bottom: solid #1eddff 5px;
+    border-radius: 10px;
+}

@@ -44,7 +44,8 @@ export function capturePokemon(pokemon) {
     setPokedex(pokedex);
 }
 
-function setPokedex(pokedex) {
+// Tested and Passing
+export function setPokedex(pokedex) {
     let pokedexString = JSON.stringify(pokedex);
     localStorage.setItem('POKEDEX', pokedexString);
 }

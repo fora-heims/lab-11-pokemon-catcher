@@ -2,10 +2,10 @@
 // import { example } from '../example.js';
 
 import { pokemonArray } from '../src/pokemon.js';
-import { findByPokemon, createInitialPokedex, getPokedex, encounterPokemon, capturePokemon } from '../src/storage-utils.js';
+import { findByPokemon, createInitialPokedex, getPokedex, encounterPokemon, capturePokemon, setPokedex } from '../src/storage-utils.js';
 
 const test = QUnit.test;
-const skip = QUnit.skip;
+// const skip = QUnit.skip;
 
 // Passing
 test('getPokedex returns the key "POKEDEX" from localStorage', (expect) => {
@@ -95,6 +95,7 @@ test('createInitialPokedex should create a pokedex with appeared and encountered
     expect.deepEqual(actual, expected);
 });
 
+// Passing
 test('encounterPokemon increments the appeared pokemon', (expect) => {
     localStorage.removeItem('POKEDEX');
     createInitialPokedex();
@@ -122,6 +123,7 @@ test('encounterPokemon increments the appeared pokemon', (expect) => {
     expect.deepEqual(actual, expected);
 });
 
+// Passing
 test('capturePokemon should increment the value of captured of the pokemon', (expect) => {
     localStorage.removeItem('POKEDEX');
     createInitialPokedex();
@@ -146,5 +148,29 @@ test('capturePokemon should increment the value of captured of the pokemon', (ex
 
     let actual = getPokedex();
 
+    expect.deepEqual(actual, expected);
+});
+
+// Passing
+test('setPokedex should update localStorage with a key of POKEDEX', (expect) => {
+    localStorage.removeItem('POKEDEX');
+    let expected = [
+        { pokemon: 'bulbasaur', appeared: 0, chosen: 0 },
+        { pokemon: 'ivysaur', appeared: 0, chosen: 0 },
+        { pokemon: 'charmander', appeared: 0, chosen: 1 },
+        { pokemon: 'charmeleon', appeared: 0, chosen: 0 },
+        { pokemon: 'charizard', appeared: 0, chosen: 0 },
+        { pokemon: 'squirtle', appeared: 0, chosen: 0 },
+        { pokemon: 'wartortle', appeared: 0, chosen: 0 },
+        { pokemon: 'blastoise', appeared: 0, chosen: 0 },
+        { pokemon: 'caterpie', appeared: 0, chosen: 0 },
+        { pokemon: 'metapod', appeared: 0, chosen: 0 },
+        { pokemon: 'beedrill', appeared: 0, chosen: 0 },
+        { pokemon: 'weedle', appeared: 0, chosen: 0 },
+        { pokemon: 'kakuna', appeared: 0, chosen: 0 },
+        { pokemon: 'pidgey', appeared: 0, chosen: 0 },
+    ];
+    setPokedex(expected);
+    let actual = getPokedex();
     expect.deepEqual(actual, expected);
 });
