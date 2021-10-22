@@ -29,8 +29,9 @@ export function encounterPokemon(randomArray) {
         let poke = pokedex[each];
         poke.appeared++;
     }
-    let pokedexString = JSON.stringify(pokedex);
-    localStorage.setItem('POKEDEX', pokedexString);
+    setPokedex(pokedex);
+    // let pokedexString = JSON.stringify(pokedex);
+    // localStorage.setItem('POKEDEX', pokedexString);
 }
 
 // Tested and Passing
@@ -38,6 +39,12 @@ export function capturePokemon(pokemon) {
     let pokedex = getPokedex();
     let poke = findByPokemon(pokedex, pokemon);
     poke.chosen++;
+    // let pokedexString = JSON.stringify(pokedex);
+    // localStorage.setItem('POKEDEX', pokedexString);
+    setPokedex(pokedex);
+}
+
+function setPokedex(pokedex) {
     let pokedexString = JSON.stringify(pokedex);
     localStorage.setItem('POKEDEX', pokedexString);
 }
