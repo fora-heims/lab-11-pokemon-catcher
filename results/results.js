@@ -3,10 +3,10 @@ import { pokemonArray } from '../src/pokemon.js';
 import { findByPokemon, getPokedex } from '../src/storage-utils.js';
 
 const main = document.getElementById('main');
-let results = getPokedex();
+let pokedex = getPokedex();
 
 for (let stats of pokemonArray) {
-    let poke = findByPokemon(results, stats.pokemon);
+    let poke = findByPokemon(pokedex, stats.pokemon);
     let div = document.createElement('div');
     div.classList.add('results-divs');
     let title = document.createElement('h3');
@@ -23,36 +23,46 @@ for (let stats of pokemonArray) {
 }
 
 // Charts
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById('appeared-chart').getContext('2d');
+let appearedChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: pokedex.map(x => x.pokemon),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+            label: 'Appeared',
+            data: pokedex.map(x => x.appeared),
+            backgroundColor: pokemonArray.map(x => x.color_1),
+            borderColor: pokemonArray.map(x => x.color_2),
+            borderWidth: 2.5
         }]
     },
     options: {
         scales: {
             y: {
+                integer: true,
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+let snd = document.getElementById('caught-chart').getContext('2d');
+let caughtChart = new Chart(snd, {
+    type: 'bar',
+    data: {
+        labels: pokedex.map(x => x.pokemon),
+        datasets: [{
+            label: 'Caught',
+            data: pokedex.map(x => x.chosen),
+            backgroundColor: pokemonArray.map(x => x.color_1),
+            borderColor: pokemonArray.map(x => x.color_2),
+            borderWidth: 2.5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                integer: true,
                 beginAtZero: true
             }
         }
