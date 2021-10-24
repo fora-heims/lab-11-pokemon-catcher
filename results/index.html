@@ -11,14 +11,26 @@
     <link rel="stylesheet" href="../styles/home.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/results.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 </head>
 <body>
     <header>
         <a href="../"><img alt="Link to Home Page" src="../assets/badge-icons.png" /></a>
         <h1>Pokedex Stats from your most recent adventure</h1>
     </header>
-    <main id="main">
+    <main>
+        <section class="chartset-container">
+            <div class="chart-container">
+                <canvas id="appeared-chart" width="400" height="400"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="caught-chart" width="400" height="400"></canvas>
+            </div>
+        </section>
+        <section id="main">
 
+        </section>
     </main>
     <script type="module" src="./results.js"></script>
 </body>

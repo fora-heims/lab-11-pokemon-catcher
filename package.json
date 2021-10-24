@@ -27,6 +27,8 @@
     "eslint-plugin-cypress": "^2.12.1"
   },
   "dependencies": {
+    "chart": "^0.1.2",
+    "chart.js": "^3.5.1",
     "http-server": "^13.0.2"
   }
 }
