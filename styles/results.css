@@ -1,5 +1,5 @@
 .results-divs {
-    width: 250px;
+    width: 125px;
     display: flex;
     flex-direction: column;
     margin: 0px 20px 100px 20px;
@@ -15,8 +15,16 @@ main {
     justify-content: center;
 }
 
+#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 .results-divs img {
-    width: 150px;
+    width: 75px;
 }
 
 .results-divs:hover img {
@@ -29,4 +37,16 @@ main {
     border-top: solid #f1a61b 5px;
     border-bottom: solid #1eddff 5px;
     border-radius: 10px;
+}
+
+.chartset-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-container {
+    width: 50vw;
+    min-width: 200px;
 }

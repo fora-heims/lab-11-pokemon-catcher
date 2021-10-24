@@ -19,23 +19,33 @@
         <h1>Wild Pokemon Appear</h1>
     </header>
     <main>
-        <section>
-            <div>
+        <section id="main">
+            <div class="box">
                 <label>
                     <input type="radio" name="pkmn" id="pkmn-r1" value=0>
                     <img src="" alt="" id="pkmn-img-r1">
                 </label>
+                <span id="pkmn-s1"></span>
+                <span id="pkmn-ss1"></span>
+            </div>
+            <div class="box">
                 <label>
                     <input type="radio" name="pkmn" id="pkmn-r2" value=1>
                     <img src="" alt="" id="pkmn-img-r2">
                 </label>
+                <span id="pkmn-s2"></span>
+                <span id="pkmn-ss2"></span>
+            </div>
+            <div class="box">
                 <label>
                     <input type="radio" name="pkmn" id="pkmn-r3" value=2>
                     <img src="" alt="" id="pkmn-img-r3">
                 </label>
+                <span id="pkmn-s3"></span>
+                <span id="pkmn-ss3"></span>
             </div>
-            <button id="catch-button">Catch That Pokemon</button>
         </section>
+        <button id="catch-button">Catch That Pokemon</button>
     </main>
     <script type="module" src="./app.js"></script>
 </body>
