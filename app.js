@@ -17,6 +17,9 @@ const catchButton = document.getElementById('catch-button');
 let x = 0;
 let y = 0;
 let z = 0;
+let a = 0;
+let b = 0;
+let c = 0;
 let randomArray = [x, y, z];
 let pokemonCaptured = 0;
 createInitialPokedex();
@@ -29,9 +32,13 @@ function generateIndexes() {
 
 function generatePokemon() {
     generateIndexes();
-    while (x === y || x === z || y === z) {
+    while (x === y || x === z || y === z || a === x || a === y || a === z || b === x || b === y || b === z || c === x || c === y || c === z) {
         generateIndexes();
     }
+    a = x;
+    b = y;
+    c = z;
+
     let pokedex = getPokedex();
     let xDex = findByPokemon(pokedex, pokemonArray[x].pokemon);
     let yDex = findByPokemon(pokedex, pokemonArray[y].pokemon);
@@ -60,7 +67,7 @@ generatePokemon();
 catchButton.addEventListener('click', () => {
     let checked = document.querySelectorAll('input[type=radio]:checked');
     if (checked.length === 1) {
-        if (pokemonCaptured <= 10) {
+        if (pokemonCaptured < 10) {
             pokemonCaptured++;
             let chosen = pokemonArray[randomArray[checked[0].value]].pokemon;
             capturePokemon(chosen);
