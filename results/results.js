@@ -24,7 +24,8 @@ for (let stats of pokemonArray) {
 
 // Charts
 let ctx = document.getElementById('appeared-chart').getContext('2d');
-let appearedChart = new Chart(ctx, {
+// eslint-disable-next-line no-undef
+new Chart(ctx, {
     type: 'bar',
     data: {
         labels: pokedex.map(x => x.pokemon),
@@ -47,7 +48,8 @@ let appearedChart = new Chart(ctx, {
 });
 
 let snd = document.getElementById('caught-chart').getContext('2d');
-let caughtChart = new Chart(snd, {
+// eslint-disable-next-line no-undef
+new Chart(snd, {
     type: 'bar',
     data: {
         labels: pokedex.map(x => x.pokemon),
