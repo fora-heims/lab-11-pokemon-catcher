@@ -2,7 +2,7 @@
 // import { example } from '../example.js';
 
 import { pokemonArray } from '../src/pokemon.js';
-import { findByPokemon, createInitialPokedex, getPokedex, encounterPokemon, capturePokemon, setPokedex } from '../src/storage-utils.js';
+import { findByPokemon, createInitialPokedex, getPokedex, encounterPokemon, capturePokemon, setPokedex, getTotal, setTotal } from '../src/storage-utils.js';
 
 const test = QUnit.test;
 // const skip = QUnit.skip;
@@ -172,5 +172,54 @@ test('setPokedex should update localStorage with a key of POKEDEX', (expect) => 
     ];
     setPokedex(expected);
     let actual = getPokedex();
+    expect.deepEqual(actual, expected);
+});
+
+// Passing
+test('getTotal returns the key "TOTAL" from localStorage', (expect) => {
+
+    const pokedex = [
+        { pokemon: 'bulbasaur', appeared: 0, chosen: 0 },
+        { pokemon: 'ivysaur', appeared: 0, chosen: 0 },
+        { pokemon: 'charmander', appeared: 0, chosen: 0 },
+        { pokemon: 'charmeleon', appeared: 0, chosen: 0 },
+        { pokemon: 'charizard', appeared: 0, chosen: 0 },
+        { pokemon: 'squirtle', appeared: 0, chosen: 0 },
+        { pokemon: 'wartortle', appeared: 0, chosen: 0 },
+        { pokemon: 'blastoise', appeared: 0, chosen: 0 },
+        { pokemon: 'caterpie', appeared: 0, chosen: 0 },
+        { pokemon: 'metapod', appeared: 0, chosen: 0 },
+        { pokemon: 'beedrill', appeared: 0, chosen: 0 },
+        { pokemon: 'weedle', appeared: 0, chosen: 0 },
+        { pokemon: 'kakuna', appeared: 0, chosen: 0 },
+        { pokemon: 'pidgey', appeared: 0, chosen: 0 },
+    ];
+    localStorage.setItem('TOTAL', JSON.stringify(pokedex));
+    
+    const actual = getTotal();
+    expect.deepEqual(actual, pokedex);
+});
+
+// Passing
+test('setTotal should update localStorage with a key of TOTAL', (expect) => {
+    localStorage.removeItem('TOTAL');
+    let expected = [
+        { pokemon: 'bulbasaur', appeared: 0, chosen: 0 },
+        { pokemon: 'ivysaur', appeared: 0, chosen: 0 },
+        { pokemon: 'charmander', appeared: 0, chosen: 1 },
+        { pokemon: 'charmeleon', appeared: 0, chosen: 0 },
+        { pokemon: 'charizard', appeared: 0, chosen: 0 },
+        { pokemon: 'squirtle', appeared: 0, chosen: 0 },
+        { pokemon: 'wartortle', appeared: 0, chosen: 0 },
+        { pokemon: 'blastoise', appeared: 0, chosen: 0 },
+        { pokemon: 'caterpie', appeared: 0, chosen: 0 },
+        { pokemon: 'metapod', appeared: 0, chosen: 0 },
+        { pokemon: 'beedrill', appeared: 0, chosen: 0 },
+        { pokemon: 'weedle', appeared: 0, chosen: 0 },
+        { pokemon: 'kakuna', appeared: 0, chosen: 0 },
+        { pokemon: 'pidgey', appeared: 0, chosen: 0 },
+    ];
+    setTotal(expected);
+    let actual = JSON.parse(localStorage.getItem('TOTAL'));
     expect.deepEqual(actual, expected);
 });

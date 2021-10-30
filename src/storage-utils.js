@@ -49,3 +49,22 @@ export function setPokedex(pokedex) {
     let pokedexString = JSON.stringify(pokedex);
     localStorage.setItem('POKEDEX', pokedexString);
 }
+
+// Tested and Passing
+export function setTotal(pokedex) {
+    let pokedexString = JSON.stringify(pokedex);
+    localStorage.setItem('TOTAL', pokedexString);
+}
+
+// Tested and Passing
+export function getTotal() {
+    let pokedexString = localStorage.getItem('TOTAL');
+    const pokedexObject = JSON.parse(pokedexString);
+    return pokedexObject;
+}
+
+export function addTotalPokedex() {
+    let currentPokedex = getPokedex();
+    let currentTotal = getTotal();
+    // add appeared and caught values of current pokedex to current total
+}
